@@ -1,4 +1,4 @@
-package start.runnable;
+package thread.start.example;
 
 public class HelloRunnable implements Runnable{
 

@@ -1,36 +1,36 @@
-package start.thread;
+package thread.start.example;
 
 public class BadThreadMain {
 
     public static void main(String[] args) {
 
         Thread thread = Thread.currentThread();
-        System.out.println(thread.getName() + ": main() start");
+        System.out.println(thread.getName() + ": main() thread.start");
 
         HelloThread helloThread = new HelloThread();
-        System.out.println(Thread.currentThread().getName() + ": before start()");
+        System.out.println(Thread.currentThread().getName() + ": before thread.start()");
         helloThread.run(); // run() 직접 실행
-        System.out.println(Thread.currentThread().getName() + ": after start()");
+        System.out.println(Thread.currentThread().getName() + ": after thread.start()");
 
         System.out.println(thread.getName() + ": main() end");
 
 
         /*
-            helloThread.start() 했을 때의 로그
+            helloThread.thread.start() 했을 때의 로그
             ================================
-            main: main() start
-            main: before start()
-            main: after start()
+            main: main() thread.start
+            main: before thread.start()
+            main: after thread.start()
             main: main() end
             Thread-0: run()
             ================================
 
             helloThread.run() 했을 때의 로그
             ================================
-            main: main() start
-            main: before start()
+            main: main() thread.start
+            main: before thread.start()
             main: run()
-            main: after start()
+            main: after thread.start()
             main: main() end
             ================================
 
@@ -42,10 +42,10 @@ public class BadThreadMain {
             main 스레드가 run() 메서드를 실행했기 때문에 main 스레드가 사용하는 스택 위에 run() 스택 프레임이 올라간다.
             결과적으로 main 스레드에서 모든 것을 처리하게 된다.
 
-            스레드의 start() 메서드는 스레드에 스택 공간을 할당하면서 스레드를 시작하는 아주 특별한 메서드이다.
+            스레드의 thread.start() 메서드는 스레드에 스택 공간을 할당하면서 스레드를 시작하는 아주 특별한 메서드이다.
             그리고 해당 스레드에서 run() 메서드를 실행한다.
             따라서 main 스레드가 아닌 별도의 스레드에 재정의한 run() 메서드를 실행하려면
-            "반드시 start() 메서드를 호출해야 한다."
+            "반드시 thread.start() 메서드를 호출해야 한다."
          */
 
     }

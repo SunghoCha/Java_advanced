@@ -1,12 +1,12 @@
-package start.daemon;
+package thread.start.example;
 
 public class DaemonThreadMain {
 
     public static void main(String[] args) {
-        System.out.println(Thread.currentThread().getName() + ": main() start");
+        System.out.println(Thread.currentThread().getName() + ": main() thread.start");
         DaeMonThread daeMonThread = new DaeMonThread();
         daeMonThread.setDaemon(true); // 데몬 스레드 default 값은 false 인데 true 로 설정하면 Daemon Thread 가 됨
-        daeMonThread.start(); // 데몬 스레드 여부는 start() 실행 전에 결정해야 한다. 이후에는 변경되지 않음
+        daeMonThread.start(); // 데몬 스레드 여부는 thread.start() 실행 전에 결정해야 한다. 이후에는 변경되지 않음
 
         System.out.println(Thread.currentThread().getName() + ": main() end");
     }
@@ -28,9 +28,9 @@ public class DaemonThreadMain {
     /*
         daemon thread 설정을 false 로 했을 때의 로그
         =======================================
-        main: main() start
+        main: main() thread.start
         main: main() end
-        Thread-0: run() start
+        Thread-0: run() thread.start
         Thread-0: run() end
         
         Process finished with exit code 0
@@ -40,9 +40,9 @@ public class DaemonThreadMain {
         반면에    
         daemon thread 설정을 true 로 했을 때의 로그
         =======================================
-        main: main() start
+        main: main() thread.start
         main: main() end
-        Thread-0: run() start
+        Thread-0: run() thread.start
         
         Process finished with exit code 0
         =======================================

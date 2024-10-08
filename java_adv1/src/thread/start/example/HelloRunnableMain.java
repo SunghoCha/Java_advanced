@@ -1,9 +1,9 @@
-package start.runnable;
+package thread.start.example;
 
 public class HelloRunnableMain {
 
     public static void main(String[] args) {
-        System.out.println(Thread.currentThread().getName() + ": main() start");
+        System.out.println(Thread.currentThread().getName() + ": main() thread.start");
 
         HelloRunnable runnable = new HelloRunnable();
         Thread thread = new Thread(runnable); // 작업과 스레드를 분리
