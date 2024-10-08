@@ -1,4 +1,4 @@
-package start;
+package start.thread;
 
 public class HelloThreadMain {
 

@@ -1,4 +1,4 @@
-package start;
+package start.daemon;
 
 public class DaemonThreadMain {
 
@@ -14,7 +14,7 @@ public class DaemonThreadMain {
     static class DaeMonThread extends Thread {
         @Override
         public void run() {
-            System.out.println(Thread.currentThread().getName() + ": run() start");
+            System.out.println(Thread.currentThread().getName() + ": run()");
             // Thread.sleep()은 throw e가 안되서 try/catch 로 잡아줘야함 (check 예외로 설계된 이유는 추후에 설명)
             try {
                 Thread.sleep(3000); // 3초간 실행되는 스레드라고 가정한 예시
