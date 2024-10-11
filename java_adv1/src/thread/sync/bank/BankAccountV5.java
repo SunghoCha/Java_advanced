@@ -7,14 +7,14 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static util.MyLogger.log;
 
-public class BankAccountV4 implements BankAccount {
+public class BankAccountV5 implements BankAccount {
 
     //    volatile private int balance;
     private int balance;
     private final Lock lock = new ReentrantLock();
 
 
-    public BankAccountV4(int balance) {
+    public BankAccountV5(int balance) {
         this.balance = balance;
     }
 
@@ -22,7 +22,11 @@ public class BankAccountV4 implements BankAccount {
     public boolean withdraw(int amount) {
         log("[거래 시작]: " + getClass().getSimpleName());
 
-        lock.lock(); // ReentrantLock 이용해서 lock 걸기
+        if (!lock.tryLock()) {
+            log("[진입 실패] 이미 처리중인 작업이 있습니다.");
+            return false;
+        }
+
         try {
             log("[검증 시작] 출금액: " + amount + ", 잔액: " + balance);
             if (balance < amount) {
