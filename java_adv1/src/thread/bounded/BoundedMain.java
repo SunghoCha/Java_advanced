@@ -14,11 +14,19 @@ public class BoundedMain {
     public static void main(String[] args) {
 
         // 1. BoundedQueue 선택
-        BoundedQueue queue = new BoundedQueueV1(MAX_SIZE);
+        //BoundedQueue queue = new BoundedQueueV1(MAX_SIZE);
+        //BoundedQueue queue = new BoundedQueueV2(MAX_SIZE);
+        //BoundedQueue queue = new BoundedQueueV3(MAX_SIZE);
+        //BoundedQueue queue = new BoundedQueueV4(MAX_SIZE);
+        //BoundedQueue queue = new BoundedQueueV5(MAX_SIZE);
+        //BoundedQueue queue = new BoundedQueueV6_1(MAX_SIZE);
+        //BoundedQueue queue = new BoundedQueueV6_2(MAX_SIZE);
+        //BoundedQueue queue = new BoundedQueueV6_3(MAX_SIZE);
+        BoundedQueue queue = new BoundedQueueV6_4(MAX_SIZE);
 
         // 2. 생산자, 소비자 실행 순서 선택, 반드시 하나만 선택해서 하기
-        //producerFirst(queue);
-        consumerFirst(queue);
+        producerFirst(queue);
+        //consumerFirst(queue);
     }
 
     private static void producerFirst(BoundedQueue queue) {
@@ -34,7 +42,7 @@ public class BoundedMain {
     }
 
     private static void consumerFirst(BoundedQueue queue) {
-        log("====== [생성자 먼저 실행 케이스] 시작, " + queue.getClass().getSimpleName() + " ======");
+        log("====== [소비자 먼저 실행 케이스] 시작, " + queue.getClass().getSimpleName() + " ======");
 
         List<Thread> threads = new ArrayList<>();
         startConsumer(queue, threads);
@@ -42,7 +50,7 @@ public class BoundedMain {
         startProducer(queue, threads);
         printAllState(queue, threads);
 
-        log("====== [생성자 먼저 실행 케이스] 종료, " + queue.getClass().getSimpleName() + " ======");
+        log("====== [소비자 먼저 실행 케이스] 종료, " + queue.getClass().getSimpleName() + " ======");
     }
 
 
