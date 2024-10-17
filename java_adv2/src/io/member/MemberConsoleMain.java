@@ -1,13 +1,14 @@
 package io.member;
 
+import io.member.impl.FileMemberRepository;
 import io.member.impl.MemoryMemberRepository;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class MemberConsoleMain {
 
-    public static final MemberRepository memberRepository = new MemoryMemberRepository();
+    //public static final MemberRepository repository = new MemoryMemberRepository();
+    public static final MemberRepository repository = new FileMemberRepository();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -20,7 +21,7 @@ public class MemberConsoleMain {
             if (choice == 1) {
                 registerMember(scanner);
             } else if (choice == 2) {
-                displayMember(memberRepository);
+                displayMember(repository);
             } else if (choice == 3) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
@@ -40,7 +41,7 @@ public class MemberConsoleMain {
         System.out.print("Age 입력: ");
         int age = scanner.nextInt();
 
-        memberRepository.add(new Member(id, name, age));
+        repository.add(new Member(id, name, age));
         System.out.println("회원이 성공적으로 등록되었습니다.");
         System.out.println();
     }
