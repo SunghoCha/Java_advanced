@@ -27,5 +27,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-/temp/buffered.dat
-/temp/hello.dat
+/temp/**
