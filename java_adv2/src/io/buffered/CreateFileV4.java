@@ -16,7 +16,7 @@ public class CreateFileV4 {
         for (int i = 0; i < FILE_SIZE; i++) {
             buffer[i] = 1;
         }
-        fos.write(buffer);
+        fos.write(buffer); // 한 번에 쓰기
         fos.close();
 
         long endTime = System.currentTimeMillis();

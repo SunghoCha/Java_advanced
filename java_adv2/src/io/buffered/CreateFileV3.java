@@ -14,9 +14,9 @@ public class CreateFileV3 {
         long startTime = System.currentTimeMillis();
 
         for (int i = 0; i < FILE_SIZE; i++) {
-            bos.write(1);
+            bos.write(1); // 버퍼에 저장하다가 꽉차면 fos.write()
         }
-        bos.close();
+        bos.close(); // close()하면 버퍼에 남은 데이터 flush()
 
         long endTime = System.currentTimeMillis();
         System.out.println("File create: " + FILE_NAME);

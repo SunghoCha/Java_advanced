@@ -1,14 +1,16 @@
 package io.member;
 
-import io.member.impl.FileMemberRepository;
-import io.member.impl.MemoryMemberRepository;
+import io.member.impl.DataMemberRepository;
+import io.member.impl.ObjectMemberRepository;
 
 import java.util.Scanner;
 
 public class MemberConsoleMain {
 
     //public static final MemberRepository repository = new MemoryMemberRepository();
-    public static final MemberRepository repository = new FileMemberRepository();
+    //public static final MemberRepository repository = new FileMemberRepository();
+    //public static final MemberRepository repository = new DataMemberRepository();
+    public static final MemberRepository repository = new ObjectMemberRepository();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -21,7 +23,7 @@ public class MemberConsoleMain {
             if (choice == 1) {
                 registerMember(scanner);
             } else if (choice == 2) {
-                displayMember(repository);
+                displayMember();
             } else if (choice == 3) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
@@ -46,9 +48,9 @@ public class MemberConsoleMain {
         System.out.println();
     }
 
-    private static void displayMember(MemberRepository memberRepository) {
+    private static void displayMember() {
         System.out.println("회원 목록:");
-        System.out.println(memberRepository.findAll());
+        System.out.println(repository.findAll());
         System.out.println();
     }
 }
