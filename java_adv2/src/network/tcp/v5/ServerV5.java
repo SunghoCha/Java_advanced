@@ -1,4 +1,6 @@
-package network.tcp.v3;
+package network.tcp.v5;
+
+import network.tcp.v4.SessionV4;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -6,7 +8,7 @@ import java.net.Socket;
 
 import static io.util.MyLogger.log;
 
-public class ServerV3 {
+public class ServerV5 {
 
     public static final int PORT = 12345;
 
@@ -22,7 +24,7 @@ public class ServerV3 {
             Socket socket = serverSocket.accept(); // 블로킹
             log("소켓 연결: " + socket);
 
-            SessionV3 session = new SessionV3(socket);
+            SessionV5 session = new SessionV5(socket);
             Thread thread = new Thread(session);
             thread.start();
         }

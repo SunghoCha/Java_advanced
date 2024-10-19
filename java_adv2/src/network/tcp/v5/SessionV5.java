@@ -1,4 +1,6 @@
-package network.tcp.v3;
+package network.tcp.v5;
+
+import network.tcp.SocketCloseUtil;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -7,19 +9,20 @@ import java.net.Socket;
 
 import static io.util.MyLogger.log;
 
-public class SessionV3 implements Runnable{
+public class SessionV5 implements Runnable {
 
     private final Socket socket;
 
-    public SessionV3(Socket socket) {
+    public SessionV5(Socket socket) {
         this.socket = socket;
     }
 
     @Override
     public void run() {
-        try {
-            DataInputStream input = new DataInputStream(socket.getInputStream());
-            DataOutputStream output = new DataOutputStream(socket.getOutputStream());
+
+        try (socket; // socket도 따로 해줘야 자원정리 가능 try-with-resources는 블록 내에서 새로 선언된 자원을 관리하도록 설계된 것이라 스코프 맞지 않는듯
+                DataInputStream input = new DataInputStream(socket.getInputStream());
+             DataOutputStream output = new DataOutputStream(socket.getOutputStream())) {
             while (true) {
                 // 클라이언트로부터 문자 받기
                 String received = input.readUTF();
@@ -34,14 +37,10 @@ public class SessionV3 implements Runnable{
                 output.writeUTF(toSend);
                 log("client <- server: " + toSend);
             }
-
-            log("연결 종료: " + socket);
-            input.close();
-            output.close();
-            socket.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            log(e);
         }
+        log("연결 종료: " + socket + " isClosed: " + socket.isClosed());
     }
 
 }
