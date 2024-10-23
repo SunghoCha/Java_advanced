@@ -62,4 +62,12 @@ public class Session implements Runnable {
         closed = true;
         log("연결 종료: " + socket);
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
