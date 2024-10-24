@@ -41,7 +41,7 @@ public class WriteHandler implements Runnable {
                     output.writeUTF("/message" + DELIMITER + toSend);
                 }
             }
-        } catch (IOException | NoSuchElementException e) {
+        } catch (IOException | NoSuchElementException e) { // System.in 닫으면 NoSuchElementException
             log(e);
         } finally {
             client.close();

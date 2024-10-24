@@ -28,7 +28,7 @@ public class CommandManagerV3 implements CommandManager {
     public void execute(String totalMessage, Session session) throws IOException {
         String[] args = totalMessage.split(DELIMITER, 2);
         String key = args[0];
-        
+
         Command command = commands.getOrDefault(key, defaultCommand);
         command.execute(args, session);
     }
