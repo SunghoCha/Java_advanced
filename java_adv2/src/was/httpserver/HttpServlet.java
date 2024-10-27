@@ -1,6 +1,7 @@
 package was.httpserver;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public interface HttpServlet {
 

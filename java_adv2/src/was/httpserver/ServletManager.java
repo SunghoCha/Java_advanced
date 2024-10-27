@@ -4,6 +4,7 @@ import was.v5.servlet.InternalErrorServlet;
 import was.v5.servlet.NotFoundServlet;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
