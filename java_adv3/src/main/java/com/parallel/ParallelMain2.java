@@ -1,4 +1,6 @@
-package com.util;
+package com.parallel;
+
+import com.util.HeavyJob;
 
 import static com.util.MyLogger.log;
 
